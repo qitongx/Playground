@@ -5,8 +5,6 @@ import retrofit2.http.Body;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
-import java.util.List;
-
 /**
  * Created by Josh on 5/13/16.
  */
@@ -17,5 +15,5 @@ public interface Apiws6Service {
             "Content-Type: application/json"
     })
     @POST("Authentication")
-    Call<Apiws6LoginResponse> Login(@Body Apiws6LoginRequest loginRequest);
+    Call<Apiws6LoginResponse> Login(@Body Apiws6LoginRequestBody loginRequest);
 }

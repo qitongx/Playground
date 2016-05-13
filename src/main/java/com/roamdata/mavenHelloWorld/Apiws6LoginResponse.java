@@ -9,4 +9,6 @@ public class Apiws6LoginResponse {
     String terminalId;
     String storeId;
     String chainId;
+
+    Wsapi6Configuration configuration;
 }

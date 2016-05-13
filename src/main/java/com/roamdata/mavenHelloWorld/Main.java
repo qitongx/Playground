@@ -10,7 +10,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
-import java.util.List;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Main {
@@ -41,7 +40,7 @@ public class Main {
 
     public static void callVersion3(Apiws6Service apiws6Service, String userName, String password) {
 
-        Call<Apiws6LoginResponse> loginCall = apiws6Service.Login(new Apiws6LoginRequest(userName, password));
+        Call<Apiws6LoginResponse> loginCall = apiws6Service.Login(new Apiws6LoginRequestBody(userName, password));
         Response loginResponse = null;
 
         try {
@@ -54,6 +53,7 @@ public class Main {
             System.out.println("Login Response chainId: " + ((Apiws6LoginResponse) loginResponse.body()).chainId);
             System.out.println("Login Response storeId: " + ((Apiws6LoginResponse) loginResponse.body()).storeId);
             System.out.println("====================\n\n\n");
+            System.out.println("Login Response configuration: " + ((Apiws6LoginResponse) loginResponse.body()).configuration.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
