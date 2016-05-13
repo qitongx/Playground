@@ -4,6 +4,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -14,45 +15,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Main {
 
-    public static void callVersion2(GitHubService service) {
-
-        // here given a false username to output an error:
-        /**
-         * curl https://api.github.com/users/xxx/repos/
-         {
-         "message": "Not Found",
-         "documentation_url": "https://developer.github.com/v3"
-         }
-         */
-
-        // give a success
-        Call<List<Repo>> repos = service.ListRepos("qitongx");
-
-        Response response = null;
-
-        try {
-            response = repos.execute();
-
-            System.out.println("====================\n\n\n");
-            System.out.println("Response successful? : " + response.isSuccessful());
-            System.out.println("Response git url: " + ((List<Repo>) response.body()).get(0).gitUrl);
-            System.out.println("Response default branch: " + ((List<Repo>) response.body()).get(0).defaultBranch);
-            System.out.println("====================\n\n\n");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] args) {
 
         Gson snakeCaseGson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();
 
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(new LoggingInterceptor())
+                .build();
+
         Retrofit wsapiEmvAio = new Retrofit.Builder()
                 .baseUrl("http://emv-aio.bos.roamdata.com/wsapi/")
                 .addConverterFactory(GsonConverterFactory.create(snakeCaseGson))
+                .client(client)
                 .build();
 
         Apiws6Service apiws6Service = wsapiEmvAio.create(Apiws6Service.class);
@@ -78,7 +54,6 @@ public class Main {
             System.out.println("Login Response chainId: " + ((Apiws6LoginResponse) loginResponse.body()).chainId);
             System.out.println("Login Response storeId: " + ((Apiws6LoginResponse) loginResponse.body()).storeId);
             System.out.println("====================\n\n\n");
-
         } catch (IOException e) {
             e.printStackTrace();
         }
