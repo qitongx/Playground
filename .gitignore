@@ -1,0 +1,17 @@
+*.class
+target/
+*.DS_Store
+/src/main/java/com/roamdata/portal/roammerchant/Version.java
+
+# Package Files #
+*.jar
+*.war
+*.ear
+.DS_Store
+
+# IDEA Project Info Files #
+.idea
+*.iml
+*.ipr
+*.iws
+atlassian-ide-plugin.xml
