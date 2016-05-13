@@ -1,5 +1,9 @@
 package com.roamdata.mavenHelloWorld;
 
+import com.roamdata.mavenHelloWorld.dao.wsapi6.Apiws6LoginRequestBody;
+import com.roamdata.mavenHelloWorld.dao.wsapi6.Apiws6LoginResponse;
+import com.roamdata.mavenHelloWorld.services.Apiws6Service;
+
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,12 +52,12 @@ public class Main {
 
             System.out.println("====================\n\n\n");
             System.out.println("Login Response successful? : " + loginResponse.isSuccessful());
-            System.out.println("Login Response organizationId: " + ((Apiws6LoginResponse) loginResponse.body()).organizationId);
-            System.out.println("Login Response terminalId: " + ((Apiws6LoginResponse) loginResponse.body()).terminalId);
-            System.out.println("Login Response chainId: " + ((Apiws6LoginResponse) loginResponse.body()).chainId);
-            System.out.println("Login Response storeId: " + ((Apiws6LoginResponse) loginResponse.body()).storeId);
+            System.out.println("Login Response organizationId: " + ((Apiws6LoginResponse) loginResponse.body()).getOrganizationId());
+            System.out.println("Login Response terminalId: " + ((Apiws6LoginResponse) loginResponse.body()).getTerminalId());
+            System.out.println("Login Response chainId: " + ((Apiws6LoginResponse) loginResponse.body()).getChainId());
+            System.out.println("Login Response storeId: " + ((Apiws6LoginResponse) loginResponse.body()).getStoreId());
             System.out.println("====================\n\n\n");
-            System.out.println("Login Response configuration: " + ((Apiws6LoginResponse) loginResponse.body()).configuration.toString());
+            System.out.println("Login Response configuration: " + ((Apiws6LoginResponse) loginResponse.body()).getConfiguration().toString());
         } catch (IOException e) {
             e.printStackTrace();
         }

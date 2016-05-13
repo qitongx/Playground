@@ -1,4 +1,4 @@
-package com.roamdata.mavenHelloWorld;
+package com.roamdata.mavenHelloWorld.dao.wsapi6;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -17,6 +17,21 @@ public class Wsapi6Configuration {
     @SerializedName("processing.config.currency")
     Wsapi6Currency organizationCurrency;
 
+    public Boolean getPermissionAddSubmerchantInMerchantPortal() {
+        return permissionAddSubmerchantInMerchantPortal;
+    }
+
+    public void setPermissionAddSubmerchantInMerchantPortal(Boolean permissionAddSubmerchantInMerchantPortal) {
+        this.permissionAddSubmerchantInMerchantPortal = permissionAddSubmerchantInMerchantPortal;
+    }
+
+    public Wsapi6Currency getOrganizationCurrency() {
+        return organizationCurrency;
+    }
+
+    public void setOrganizationCurrency(Wsapi6Currency organizationCurrency) {
+        this.organizationCurrency = organizationCurrency;
+    }
 
     @Override
     public String toString() {

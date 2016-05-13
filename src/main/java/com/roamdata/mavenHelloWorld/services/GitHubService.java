@@ -1,9 +1,10 @@
-package com.roamdata.mavenHelloWorld;
+package com.roamdata.mavenHelloWorld.services;
 
-import java.io.IOException;
+import com.roamdata.mavenHelloWorld.dao.example.Repo;
+import com.roamdata.mavenHelloWorld.dao.example.RepoErrorResponse;
+
 import java.util.List;
 import retrofit2.Call;
-import retrofit2.Retrofit;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
